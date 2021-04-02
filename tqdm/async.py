@@ -1,7 +1,6 @@
 '''
-tqdm also supports asyncio
+This example demonstrates tqdm in async for loops
 '''
-
 import asyncio
 from tqdm.asyncio import tqdm
 

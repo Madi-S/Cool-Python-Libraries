@@ -1,3 +1,6 @@
+'''
+This example demonstrates tqdm basic usage
+'''
 from tqdm import tqdm
 from time import sleep
 
