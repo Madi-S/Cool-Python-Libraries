@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 @argh.arg('-t', '--tag', choices=['p', 'h1', 'div', 'span'], default='p', help='Choose a tag to count, by default "p"')
 @argh.arg('--verbose', '-v', help='Show more data')
 def get_tag_count_from_url(url, tag=None, verbose=False):
-    '''This is help text: this function will retrieve the number of given tag occurences'''
+    '''This is help text: this function will retrieve the number of given tag occurrences'''
     r = requests.get(url)
     if verbose:
         print(f'Response: {r}')
