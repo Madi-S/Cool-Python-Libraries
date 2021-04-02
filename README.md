@@ -6,11 +6,11 @@ Inspired by this [video](https://www.youtube.com/watch?v=eILeIEE3C8c)
 
 ## 1) Argh
 
-### Argh installation
-
 As the [docs](https://argh.readthedocs.io/en/latest/) says:
 
 Argh is a smart wrapper for argparse. Argparse is a very powerful tool; Argh just makes it easy to use.
+
+### Argh installation
 
 ```bash
 pip install argh
@@ -58,3 +58,4 @@ python calc.py 2+2*2
     Evaluating expression 2+2*2
     6
 ```
+
