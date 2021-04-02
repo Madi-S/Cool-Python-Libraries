@@ -2,6 +2,7 @@
 
 This repositroy demonstrates some of very useful python libraries
 
+Inspired by this [video](https://www.youtube.com/watch?v=eILeIEE3C8c)
 
 ## 1) Argh
 
