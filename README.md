@@ -58,4 +58,38 @@ python calc.py 2+2*2
     Evaluating expression 2+2*2
     6
 ```
+## 2) Tqdm
 
+As the [docs](https://tqdm.github.io/) says:
+
+Tqdm instantly makes your loops show a smart progress meter - just wrap any iterable with `tqdm(iterable)`, and you’re done!
+
+### Tqdm installation
+
+```bash
+pip install tqdm
+```
+
+### Tqdm usage
+Code snippets for this module can be found in directory "tqdm".
+
+For example, basic tqdm usage:
+```python
+from tqdm import tqdm
+from time import sleep
+
+a = 0
+
+for i in tqdm(range(100)):
+    a += i
+    sleep(0.1)
+
+print(a)
+```
+```bash
+cd tqdm
+
+python quickstart.py
+100%|█████████████████████████████████████████████████████████████| 100/100 [00:10<00:00,  9.86it/s] 
+4950
+```
