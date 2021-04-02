@@ -3,9 +3,9 @@
 This repositroy demonstrates some of very useful python libraries
 
 
-## 1) argh
+## 1) Argh
 
-### Installation
+### Argh installation
 
 As the [docs](https://argh.readthedocs.io/en/latest/) says:
 
@@ -15,10 +15,10 @@ Argh is a smart wrapper for argparse. Argparse is a very powerful tool; Argh jus
 pip install argh
 ```
 
-### Usage
+### Argh usage
 Code snippets for this module can be found in directory "argh".
 
-For example, a calculator:
+For example, a calculator created using argh:
 ```python
 import argh
 
