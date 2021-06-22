@@ -96,9 +96,9 @@ python quickstart.py
 ## 3) Typing
 
 Typing forces Python to be strongly-typed language (in combination with mypy).
-This module provides with a variety of types for type hints: `Any, Callable, Union, Dict, List, Iterable, Literal` and so on.
+This module provides with a variety of types for type hints: `Any, Callable, Union, Dict, List, Iterable` and so on.
 
-As the [Docs](https://docs.python.org/3/library/typing.html) 
+[Docs](https://docs.python.org/3/library/typing.html) 
 
 ### Typing installation
 
@@ -113,7 +113,7 @@ For example, functions that accept some types:
 ```python
 def factorial(n: Union[int, float]) -> int:
 
-    # Because None is ignored, we have to create None validation on our own:
+    # Because None is ignored (accepted)
     if n is None:
         return 0
 
@@ -128,7 +128,6 @@ def factorial(n: Union[int, float]) -> int:
 
 
 print(factorial(3.5))
-print(factorial('5'))
 
 '''
 python -m mypy quickstart.py
@@ -136,10 +135,13 @@ python -m mypy quickstart.py
 Outputs an error:
 error: Argument 1 to "factorial" has incompatible type "str"; expected "int"
 Found 1 error in 1 file (checked 1 source file)
+
 '''
+
 
 def map_int_list(fn: Callable, l: List[int]) -> List[int]:
     return [fn(e) for e in l]
+
 
 print(map_int_list(factorial, [0, 1, 2, 3, 4]))
 
@@ -147,5 +149,49 @@ print(map_int_list(factorial, [0, 1, 2, 3, 4]))
 def map_int_dict(fn: Callable, d: Dict[Any, int]) -> Dict[Any, int]:
     return {key: fn(value) for key, value in d.items()}
 
+
 print(map_int_dict(factorial, {'a': 1, 'b': 5, 'c': 4, 'j': 9}))
+```
+
+## 4) Pydantic
+
+Data validation and settings management using Python type hinting.
+
+Pydantic is a huge help in parsing JSON with such features feild validation, alias for field names and fields exclusion.
+
+[Docs](https://pydantic-docs.helpmanual.io/) 
+
+### Pydantic installation
+
+```bash
+pip install pydantic
+```
+
+### Pydantic usage
+Code snippets for this module can be found in directory "pydantic".
+
+For example, creating models and parsing incoming json:
+```python
+from pydantic import BaseModel, ValidationError
+
+
+class City(BaseModel):
+    id: int
+    name: str
+    population: int
+
+
+incoming_json = '''
+{
+    "id": 228,
+    "name": "Kokshetau",
+    "population": "123492"
+}
+'''
+
+city = City.parse_raw(incoming_json)
+print(city)
+print(city.id, city.name, city.population)
+#> id=228 name='Kokshetau' population=123492
+#> 228 Kokshetau 123492
 ```
