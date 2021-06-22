@@ -93,3 +93,59 @@ python quickstart.py
 100%|█████████████████████████████████████████████████████████████| 100/100 [00:10<00:00,  9.86it/s] 
 4950
 ```
+## 3) Typing
+
+Typing forces Python to be strongly-typed language (in combination with mypy).
+This module provides with a variety of types for type hints: `Any, Callable, Union, Dict, List, Iterable, Literal` and so on.
+
+As the [Docs](https://docs.python.org/3/library/typing.html) 
+
+### Typing installation
+
+```bash
+No need to install
+```
+
+### Typing usage
+Code snippets for this module can be found in directory "typing".
+
+For example, functions that accept some types:
+```python
+def factorial(n: Union[int, float]) -> int:
+
+    # Because None is ignored, we have to create None validation on our own:
+    if n is None:
+        return 0
+
+    n = int(n)
+
+    if n < n:
+        return 0
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+
+
+print(factorial(3.5))
+print(factorial('5'))
+
+'''
+python -m mypy quickstart.py
+
+Outputs an error:
+error: Argument 1 to "factorial" has incompatible type "str"; expected "int"
+Found 1 error in 1 file (checked 1 source file)
+'''
+
+def map_int_list(fn: Callable, l: List[int]) -> List[int]:
+    return [fn(e) for e in l]
+
+print(map_int_list(factorial, [0, 1, 2, 3, 4]))
+
+
+def map_int_dict(fn: Callable, d: Dict[Any, int]) -> Dict[Any, int]:
+    return {key: fn(value) for key, value in d.items()}
+
+print(map_int_dict(factorial, {'a': 1, 'b': 5, 'c': 4, 'j': 9}))
+```
