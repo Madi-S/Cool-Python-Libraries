@@ -17,9 +17,11 @@ pip install argh
 ```
 
 ### Argh usage
+
 Code snippets for this module can be found in directory "argh".
 
 For example, a calculator created using argh:
+
 ```python
 import argh
 
@@ -36,28 +38,14 @@ def calc(expr):
 if __name__ == '__main__':
     argh.dispatch_command(calc)
 ```
+
 ```html
-cd argh
-
-python calc.py -h
-    usage: calc.py [-h] expr
-
-    positional arguments:
-    expr        -
-
-    optional arguments:
-    -h, --help  show this help message and exit
-
-
-python calc.py 5+5
-    Evaluating expression 5+5
-    10
-
-
-python calc.py 2+2*2
-    Evaluating expression 2+2*2
-    6
+cd argh python calc.py -h usage: calc.py [-h] expr positional arguments: expr -
+optional arguments: -h, --help show this help message and exit python calc.py
+5+5 Evaluating expression 5+5 10 python calc.py 2+2*2 Evaluating expression
+2+2*2 6
 ```
+
 ## 2) Tqdm
 
 As the [docs](https://tqdm.github.io/) says:
@@ -71,9 +59,11 @@ pip install tqdm
 ```
 
 ### Tqdm usage
+
 Code snippets for this module can be found in directory "tqdm".
 
 For example, basic tqdm usage:
+
 ```python
 from tqdm import tqdm
 from time import sleep
@@ -86,19 +76,21 @@ for i in tqdm(range(100)):
 
 print(a)
 ```
+
 ```bash
 cd tqdm
 
 python quickstart.py
-100%|█████████████████████████████████████████████████████████████| 100/100 [00:10<00:00,  9.86it/s] 
+100%|█████████████████████████████████████████████████████████████| 100/100 [00:10<00:00,  9.86it/s]
 4950
 ```
+
 ## 3) Typing
 
 Typing forces Python to be strongly-typed language (in combination with mypy).
 This module provides with a variety of types for type hints: `Any, Callable, Union, Dict, List, Iterable` and so on.
 
-[Docs](https://docs.python.org/3/library/typing.html) 
+[Docs](https://docs.python.org/3/library/typing.html)
 
 ### Typing installation
 
@@ -107,9 +99,11 @@ No need to install
 ```
 
 ### Typing usage
+
 Code snippets for this module can be found in directory "typing".
 
 For example, functions that accept some types:
+
 ```python
 def factorial(n: Union[int, float]) -> int:
 
@@ -159,7 +153,7 @@ Data validation and settings management using Python type hinting.
 
 Pydantic is a huge help in parsing JSON with such features feild validation, alias for field names and fields exclusion.
 
-[Docs](https://pydantic-docs.helpmanual.io/) 
+[Docs](https://pydantic-docs.helpmanual.io/)
 
 ### Pydantic installation
 
@@ -168,9 +162,11 @@ pip install pydantic
 ```
 
 ### Pydantic usage
+
 Code snippets for this module can be found in directory "pydantic".
 
 For example, creating models and parsing incoming json:
+
 ```python
 from pydantic import BaseModel, ValidationError
 
@@ -194,4 +190,48 @@ print(city)
 print(city.id, city.name, city.population)
 #> id=228 name='Kokshetau' population=123492
 #> 228 Kokshetau 123492
+```
+
+## 5) Loguru
+
+Very simple logging library.
+
+Loguru makes logging a fulfilling process. It handles all the hardships and hindrances of logging configuration. Moreover, loguru works out of the box just fine.
+
+[Docs](https://loguru.readthedocs.io/en/stable/)
+
+### Loguru installation
+
+```bash
+pip install loguru
+```
+
+### Loguru usage
+
+Code snippets for this module can be found in directory "loguru".
+
+For example, debugging program scripts and handling exceptions:
+
+```python
+from loguru import logger
+
+
+logger.debug('No need for configuration, handlers etc. Ready to go.')
+logger.info('Starting the application.')
+logger.warning('Too many connections. Restarting the application.')
+logger.critical('DDOS Attack. Shutting down the application.')
+logger.error('Cannot start the application.')
+
+
+try:
+    5 / 0
+except:
+    logger.exception('Execution failed')
+
+
+@logger.catch
+def do_crazy_stuff():
+    return 'Hello W' + 0 + 'rld'
+
+do_crazy_stuff()
 ```
