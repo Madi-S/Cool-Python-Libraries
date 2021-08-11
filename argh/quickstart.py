@@ -5,7 +5,7 @@ from random import randint
 users = {}
 
 
-def data_types(name: str, age: int=18, male: bool=False):
+def data_types(name: str, age: int = 18, male: bool = False):
     '''Test function to display data types, -m refers to male'''
 
     print(f'Name: {name}, type: {type(name)}')

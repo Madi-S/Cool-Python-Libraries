@@ -57,5 +57,6 @@ MODE = Literal['r', 'rb', 'w', 'wb']
 def open_helper(file: str, mode: MODE) -> str:
     ...
 
+
 open_helper('/some/path', 'r')      # Passes type check
 open_helper('/other/path', 'typo')  # Error in type checker

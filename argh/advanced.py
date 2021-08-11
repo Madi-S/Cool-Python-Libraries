@@ -21,6 +21,7 @@ def get_tag_count_from_url(url, tag=None, verbose=False):
     else:
         return f'URL {url} is invalid'
 
+
 if __name__ == '__main__':
     argh.dispatch_command(get_tag_count_from_url)
 

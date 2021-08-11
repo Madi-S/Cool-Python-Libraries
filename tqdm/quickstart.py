@@ -12,5 +12,4 @@ for i in tqdm(range(100)):
 
 print(a)
 
-
 # So tqdm takes any iterable as an argument

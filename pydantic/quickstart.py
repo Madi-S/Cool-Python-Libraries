@@ -34,4 +34,3 @@ try:
 except ValidationError as e:
     print('Error when parsing city JSON:', e.json())
     # send via `jsonify(e.json())`
-
